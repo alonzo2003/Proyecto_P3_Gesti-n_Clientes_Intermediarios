@@ -1,0 +1,53 @@
+
+{% include 'Cabecera.html' %}
+Formulario de edición de cliente
+
+{% for cliente in clientes %}
+
+<form method="post" action="/update" enctype="multipart/form-data">
+
+    <div class="card">
+        <div class="card-header">
+           Editar Cliente
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Datos del Cliente</h5>
+
+            <p class="card-text"> 
+
+                 <div class="form-group">
+                    <label for="txtNombre">Nombre</label>
+                    <input id="txtNombre" value="{{cliente[1]}}" class="form-control" type="text" name="txtNombre">
+                </div>
+                
+                 <div class="form-group">
+                    <label for="txtGmail">Gmail:</label>
+                    <input id="txtGmail" value="{{cliente[2]}}" class="form-control" type="text" name="txtGmail">
+                </div>
+                
+                 <div class="form-group">
+                    <label for="txtPoliza">Póliza:</label>
+                    <input id="txtPoliza" value="{{cliente[3]}}" class="form-control" type="text" name="txtPoliza">
+                </div>
+                
+                 <div class="form-group">
+                    <label for="txtNumero">Número:</label>
+                    <input id="txtNumero" value="{{cliente[4]}}" class="form-control" type="text" name="txtNumero">
+                </div>
+                
+                  <input type="hidden" value="{{cliente[0]}}" name="txtID" id="txtID">
+                  <br>
+                
+                <div class="form-group">        
+                  <input type="submit"  class= "btn btn-success" value="Actualizar">
+                    <a href="{{ url_for('index') }}" class="btn btn-primary">Regresar</a>
+                </div>
+
+            </p>
+    </div>
+</form>
+  
+
+    {% endfor %}
+
+    {% include 'Pie.html' %}

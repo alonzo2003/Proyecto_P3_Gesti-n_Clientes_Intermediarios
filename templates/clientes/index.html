@@ -1,0 +1,40 @@
+
+       {% include 'Cabecera.html' %}
+       <br/>
+       <a href="{{ url_for('crear') }}" class="btn btn-success">
+
+        Crear Nuevo Cliente
+       </a>
+       <br>
+       <br/>
+
+    <table class="table table-light">
+        <thead class="thead-light">
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Gmail</th>
+                <th>Póliza</th>
+                <th>Número de teléfono</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for cliente in clientes %}
+            <tr>
+                <td>{{ cliente[0] }}</td>
+                <td>{{ cliente[1] }}</td>
+                <td>{{ cliente[2] }}</td>
+                <td>{{ cliente[3] }}</td>
+                <td>{{ cliente[4] }}</td>
+                <td>
+                    <a class= "btn btn-warning" href="/editar/{{ cliente[0] }}">Editar</a>
+                    <a onclick="return confirm('Desea borrar el Cliente')" class= "btn btn-danger" href="/eliminar/{{ cliente[0] }}">Eliminar</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+
+    </table>
+
+         {% include 'Pie.html' %}
